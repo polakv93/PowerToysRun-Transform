@@ -6,7 +6,7 @@
   "Author": "polakv93",
   "Version": "0.88.0",
   "Language": "csharp",
-  "Website": "https://github.com/polakv93/Community.PowerToys.Run.Plugin.Transform",
+  "Website": "https://github.com/polakv93/PowerToysRun-Transform",
   "ExecuteFileName": "Community.PowerToys.Run.Plugin.Transform.dll",
   "IcoPathDark": "Images\\transform.dark.png",
   "IcoPathLight": "Images\\transform.light.png",
