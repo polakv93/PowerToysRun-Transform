@@ -70,7 +70,24 @@ namespace Community.PowerToys.Run.Plugin.Transform
                                          Title = Path.GetFileName(x)
                                      });
 
-            return jsonFiles.Select(x => new Result
+            var found = jsonFiles;
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                found = found.Select(x => new
+                    {
+                        x.FilePath,
+                        x.Title,
+                        Score = FuzzySharp.Fuzz.WeightedRatio(search, x.Title)
+                    }).Where(x => x.Score > 30)
+                    .OrderByDescending(x => x.Score)
+                    .Select(x => new
+                    {
+                        x.FilePath,
+                        x.Title
+                    }).ToList();
+            }
+            
+            return found.Select(x => new Result
             {
                 QueryTextDisplay = search,
                 IcoPath = IconPath,
